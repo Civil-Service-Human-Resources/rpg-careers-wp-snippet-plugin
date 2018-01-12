@@ -51,25 +51,6 @@ class rpgsnippets{
 		add_action('manage_posts_extra_tablenav', array($this,'bespoke_js_script'));
 		add_filter('post_updated_messages', array($this,'snippet_post_update_message'), 10, 1);
 		add_filter( 'bulk_post_updated_messages', array($this,'snippet_post_bulk_update_message'), 10, 2 );
-
-		//REGISTER ACTIVATION HOOKS
-		register_activation_hook(__FILE__, array($this, 'plugin_activation'));
-		register_deactivation_hook(__FILE__, array($this, 'plugin_deactivation'));
-	}
-
-	function plugin_activation(){
-		//CUSTOM CAPABILITIES
-		$customCaps = array(
-			'manage_rpgsnippets'     => true,
-			'read'                  => true,
-		);
-     
-		//CREATE CUSTOM ROLE
-		add_role('content_snippets', __('Content Snippets', 'rpgsnippets'), $customCaps);
-	}
-
-	function plugin_deactivation() {
-		remove_role('content_snippets');
 	}
 
 	function bespoke_js_script($which){
