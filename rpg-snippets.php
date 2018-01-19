@@ -76,6 +76,7 @@ class rpgsnippets{
 	}
 
 	function snippet_post_update_message($messages){
+		global $post;
 		if(get_post_type() === $this->get_setting('posttype')){
 			$messages['rpg-snippets'] = array(
 				0 => '', //NOT USED
